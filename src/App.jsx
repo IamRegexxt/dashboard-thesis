@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route, Navigate, useNavigate} from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import {
   UsersIcon,
@@ -23,6 +23,7 @@ function Dashboard() {
   const [feedbackData, setFeedbackData] = useState(null)
   const [loading, setLoading] = useState(true)
   const user = JSON.parse(localStorage.getItem('users') || '{}')
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +50,7 @@ function Dashboard() {
   const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('users')
-    window.location.href = '/login'
+    navigate('/login')
   }
 
   if (loading) {
