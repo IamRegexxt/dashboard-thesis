@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { UserIcon, LockClosedIcon } from '@heroicons/react/24/outline'
 import logo from '../assets/logo4.png'
-import farmImage from '../assets/people.jpg'; // adjust the path as needed
+import farmImage from '../assets/sap.jpg'; // adjust the path as needed
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -38,8 +38,6 @@ function Login() {
       navigate('/dashboard')
     } catch (error) {
       setError(error.response?.data?.message || 'Failed to login')
-      // Debug: log the error
-      console.error('Login error:', error);
     } finally {
       setLoading(false)
     }
@@ -47,27 +45,31 @@ function Login() {
 
   return (
     <div
-  className="min-h-screen w-full flex items-center justify-center bg-cover bg-center relative"
+  className="min-h-screen w-full flex items-center justify-center relative"
   style={{
     backgroundImage: `url(${farmImage})`,
     backgroundColor: '#e0f2f1',
+    backgroundSize: '100% 100%',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed'
   }}
 >
   {/* Overlay */}
   <div className="absolute top-0 left-0 w-full h-full bg-gray-19 bg-opacity-40" />
 
   {/* Glassmorphism Card */}
-  <div className="relative z-10 w-full max-w-md rounded-2xl shadow-2xl backdrop-blur-md bg-white/30 border border-white/30 p-8 flex flex-col items-center">
-    <div className="flex flex-col items-center mb-6">
-      <div className="h-20 w-20 mb-5 rounded-full bg-white/70 flex items-center justify-center shadow">
-        <img src={logo} alt="logo" className="h-15 w-15 object-contain" />
+  <div className="relative z-10 w-full max-w-sm min-h-[700px] rounded-2xl shadow-2xl backdrop-blur-md bg-white/30 border border-white/30 p-6 flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center mb-8">
+      <div className="h-20 w-20 mb-6 rounded-full bg-white/70 flex items-center justify-center shadow">
+        <img src={logo} alt="logo" className="h-16 w-16 object-contain" />
       </div>
-      <h2 className="text-2xl font-bold text-white drop-shadow text-center tracking-wide">
-        Admin
+      <h2 className="text-2xl font-bold text-white drop-shadow text-center tracking-wide mb-8">
+        ADMIN
       </h2>
     </div>
 
-    <form className="w-full space-y-5" onSubmit={handleSubmit}>
+    <form className="w-4/5 space-y-6" onSubmit={handleSubmit}>
       {error && (
         <div className="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 rounded mb-2 text-sm">
           {error}
